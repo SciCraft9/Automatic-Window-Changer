@@ -1,0 +1,17 @@
+const int IR_SENSOR_PIN = 2; // replace with the pin you connect the IR sensor to
+
+void setup() {
+  pinMode(IR_SENSOR_PIN, INPUT);
+  Serial.begin(9600); // start serial communication at 9600 baud rate
+}
+
+void loop() {
+  int ir_value = digitalRead(IR_SENSOR_PIN); // read the value of the IR sensor
+  if (ir_value == HIGH) {
+    Serial.println("door opened"); // send a message to the PC
+    delay(100); // wait for 0.1 seconds to debounce the sensor
+  } else {
+    Serial.println("door closed"); // send a message to the PC
+    delay(100); // wait for 0.1 seconds to debounce the sensor
+  }
+}
